@@ -57,4 +57,26 @@ def df_od(df, min_duration_trip=0, hour_first=0, hour_last=23):
     return df_od
 
 
+def add_iris_columns(df_od, iris_gdf):
+    # Convertir les DataFrames en GeoDataFrames
+    gdf_origin = gpd.GeoDataFrame(
+        df_od, geometry=gpd.points_from_xy(df_od['origin_lon'], df_od['origin_lat']), crs="EPSG:4326"
+    )
+    gdf_destination = gpd.GeoDataFrame(
+        df_od, geometry=gpd.points_from_xy(df_od['destination_lon'], df_od['destination_lat']), crs="EPSG:4326"
+    )
+
+    # Effectuer la jointure spatiale pour les origines
+    gdf_origin = gpd.sjoin(gdf_origin, iris_gdf[['geometry', 'IRIS']], how='left', predicate='within')
+    gdf_origin = gdf_origin.rename(columns={'IRIS': 'iris_origin'}).drop(columns=['index_right'])
+
+    # Effectuer la jointure spatiale pour les destinations
+    gdf_destination = gpd.sjoin(gdf_destination, iris_gdf[['geometry', 'IRIS']], how='left', predicate='within')
+    gdf_destination = gdf_destination.rename(columns={'IRIS': 'iris_destination'}).drop(columns=['index_right'])
+
+    # Ajouter les colonnes iris_origin et iris_destination au DataFrame original
+    df_od['iris_origin'] = gdf_origin['iris_origin']
+    df_od['iris_destination'] = gdf_destination['iris_destination']
+
+    return df_od
 
