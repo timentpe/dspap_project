@@ -43,45 +43,50 @@ dspap_project/
 
 ## 🚀 Getting Started
 
-### 1. Clone the repository
+### Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/DSPAP.git
-cd DSPAP
+git clone https://github.com/timentpe/dspap_project.git
+cd dspap_project
+```
 
-
-📥 Downloading the Data
+## 📥 Downloading the Data
 
 The dataset is not included in the repository.
-Please download the GPS data using the following links:
+Please download the GPS data using the following link: https://people.licit-lyon.eu/furno/courses/2025/class_06/GPS/
+Put the files in data folder. 
 
-➡️ (Add your download links here)
+To download the IRIS data of Lyon, use the following link : https://data.grandlyon.com/portail/fr/jeux-de-donnees/contours-iris-metropole-lyon/telechargements and download the SHP folder. 
+Then, put these IRIS data into a folder named 'Lyon IRIS' into the data folder. 
 
-Once downloaded, place the files into the data/ folder.
 
-🛠️ Installation
+## 🛠️ Installation
 
-python3 -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
+```bash
+conda env create -f environment.yml -n DSPAP_project
+conda activate DSPAP_project
 pip install -r requirements.txt
+```
 
-📊 Usage
-Launch notebooks
+## 📊 Usage
+
+Launch the notebook.
 
 
-🗺️ Outputs
+## 🗺️ Outputs
 
-Generated maps, charts, and intermediate results are stored in the outputs/ directory.
+Generated maps, charts, and intermediate results are stored in the notebook or the Output/ directory.
 These include:
 
 - Heatmaps
 - Route visualizations
 - Spatial analysis figures
 
-🤝 Contributing
+
+## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome.
 Feel free to open a pull request or report a bug.
 
-
+#### Teacher : Angelo FURNO
 
