@@ -67,7 +67,7 @@ conda env create -f environment.yml -n DSPAP_project
 conda activate DSPAP_project
 pip install -r requirements.txt
 ```
-If a library is missing when running the code, you can just 'pip install' it w, as we used the last version (maybe things changed a bit since we pushed the requirements, we're not sure).
+If a library is missing when running the code, you can just 'pip install' it, as we used the last version (maybe things changed a bit since we pushed the requirements, we're not sure).
 
 
 ## 📊 Usage
